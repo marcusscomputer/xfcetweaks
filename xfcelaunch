@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ $1 == "gimp" ]
+then
+	wmctrl -s 3
+	/usr/bin/gimp
+fi
+if [ $1 == "web" ]
+then
+	wmctrl -s 2
+	/usr/bin/firefox
+fi
+if [ $1 == "geany" ]
+then
+	wmctrl -s 1
+	/usr/bin/geany
+fi
+if [ $1 == "mail" ]
+then
+	wmctrl -s 2
+	/usr/bin/geary
+fi
+if [ $1 == "gvim" ]
+then
+	wmctrl -s 1
+	/usr/bin/gvim
+fi
+

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Get maximized state in case we need it
+MAXIMIZED=`xprop -id $(xdotool getwindowfocus) | grep "_NET_WM_STATE(ATOM) = _NET_WM_STATE_MAXIMIZED_HORZ, _NET_WM_STATE_MAXIMIZED_VERT" | wc -l`
+
+if [ $1 == "close" ]
+then
+	xdotool getwindowfocus windowclose
+fi
+
+if [ $1 == "minimize" ]
+then
+	xdotool getwindowfocus windowminimize
+fi
+
+if [ $1 == "maxrestore" ]
+then
+	if [ $MAXIMIZED -gt 0 ]
+	then
+		wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
+	else
+		wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz
+	fi
+fi
