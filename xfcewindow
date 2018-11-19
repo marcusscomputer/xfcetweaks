@@ -5,7 +5,12 @@ MAXIMIZED=`xprop -id $(xdotool getwindowfocus) | grep "_NET_WM_STATE(ATOM) = _NE
 
 if [ $1 == "close" ]
 then
-	xdotool getwindowfocus windowclose
+	# Make sure we are not attempting to close XFCE's Desktop Root Window
+	WINDOWNAME=`xdotool getwindowfocus getwindowname`
+	if ! [ $WINDOWNAME == "Desktop" ]
+	then
+		xdotool getwindowfocus windowclose
+	fi
 fi
 
 if [ $1 == "minimize" ]
