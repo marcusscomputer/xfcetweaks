@@ -10,7 +10,7 @@ if ! [ $WINDOWNAME == "Desktop" ]
 then
 	if [ $1 == "close" ]
 	then
-		xdotool getwindowfocus windowclose
+		wmctrl -c :ACTIVE:
 	fi
 
 	if [ $1 == "minimize" ]
