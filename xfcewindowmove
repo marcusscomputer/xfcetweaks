@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Define by how far you want to move the window in pixels
+WINMOVE=20
+
+# Get current window info
+export `xdotool getwindowfocus getwindowgeometry --shell`
+
+# Now do something with it, according to the info
+if [ $1 == "right" ]
+then
+	NEWX=$(($X+$WINMOVE))
+	xdotool getactivewindow windowmove $NEWX $Y
+fi
+if [ $1 == "left" ]
+then
+	NEWX=$(($X-$WINMOVE))
+	xdotool getactivewindow windowmove $NEWX $Y
+fi
+if [ $1 == "up" ]
+then
+	NEWY=$(($Y-$WINMOVE))
+	xdotool getactivewindow windowmove $X $NEWY
+fi
+if [ $1 == "down" ]
+then
+	NEWY=$(($Y+$WINMOVE))
+	xdotool getactivewindow windowmove $X $NEWY
+fi

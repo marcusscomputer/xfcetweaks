@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Get current window info
+export `xdotool getwindowfocus getwindowgeometry --shell`
+
+# Now do something with it, according to the info
+if [ $1 == "vertical" ]
+then
+	NEWW=$(($WIDTH/2))
+	xdotool getactivewindow windowsize $NEWW $HEIGHT
+fi
+if [ $1 == "verticaldouble" ]
+then
+	NEWW=$(($WIDTH*2))
+	xdotool getactivewindow windowsize $NEWW $HEIGHT
+fi
+if [ $1 == "horizontal" ]
+then
+	NEWH=$(($HEIGHT/2))
+	xdotool getactivewindow windowsize $WIDTH $NEWH
+fi
+if [ $1 == "horizontaldouble" ]
+then
+	NEWH=$(($HEIGHT*2))
+	xdotool getactivewindow windowsize $WIDTH $NEWH
+fi

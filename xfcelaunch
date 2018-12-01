@@ -8,7 +8,7 @@ fi
 if [ $1 == "web" ]
 then
 	wmctrl -s 2
-	/usr/bin/firefox
+	/usr/bin/palemoon
 fi
 if [ $1 == "geany" ]
 then
